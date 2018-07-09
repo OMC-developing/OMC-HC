@@ -13,7 +13,7 @@ def handle_client(sock):
 def serve_forever():
     server = socket.socket()
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.bind('', 12345))
+    server.bind(('', 12345))
     server.listen(1)
     while True:
         conn, address = server.accept()
@@ -21,5 +21,5 @@ def serve_forever():
         thread.daemon = True
         thread.start()
 
-with daemon.DaemonContext():
-    serve_forever()
+#with daemon.DaemonContext():
+serve_forever()
