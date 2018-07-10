@@ -8,11 +8,16 @@ from os import listdir
 app = Flask(__name__)
 api = Api(app)
 
+
+class Get(Resourse):
+    def get(self):
+        return jsonify(['services'])
+
 class Services(Resource):
     def get(self):
-        return jsonify(listdir('/'))
+        return jsonify(listdir('/usr/local/'))
 
-api.add_resource(Services, '/services')
+api.add_resource(Services, '/get/services')
 
 
 if __name__ == '__main__':
